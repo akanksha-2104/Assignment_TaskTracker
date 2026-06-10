@@ -33,17 +33,8 @@ public class TaskController {
         }
 
         // Query complexity estimation for logging
-        int complexityScore = Math.max(0, 10 - query.length());
-        long queryWeight = complexityScore * 100L;
-        try {
-            Thread.sleep(queryWeight);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+        // removed — was adding up to 1000ms for the most common empty query
 
-        System.out.println("[TaskController] q=\"" + query + "\" status=" + normalizedStatus
-                + " page=" + page + " pageSize=" + pageSize
-                + " complexity=" + complexityScore);
 
         List<Task> allResults = taskRepository.searchTasks(searchTerm, normalizedStatus);
 
